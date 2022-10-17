@@ -17,7 +17,7 @@ Computer c2 = new Computer(2, "4GB", "i5");
 context.Computers.Add(c2);
 context.SaveChanges();
 
-//Busca todos
+//Get All
 IEnumerable<Computer> computers = context.Computers;
 
 foreach (var item in computers)
@@ -25,17 +25,47 @@ foreach (var item in computers)
     Console.WriteLine($"{item.Id}, {item.Ram}, {item.Processor}");
 }
 
-//Busca por Id
+//GetById
 Computer encontrado = context.Computers.Find(1);
 
-//Editar
+//Update
 encontrado.Ram = "6GB";
 context.Computers.Update(encontrado);
 context.SaveChanges();
 
-//Deletar
+//Delete
 context.Computers.Remove(encontrado);
 context.SaveChanges();
 
+
+//Insert
+Lab l1 = new Lab(1, 11, "Redes", "C");
+context.Labs.Add(l1);
+context.SaveChanges();
+
+Lab l2 = new Lab(2, 12, "Banco de dados", "C");
+context.Labs.Add(l2);
+context.SaveChanges();
+
+//Get All
 IEnumerable<Lab> labs = context.Labs;
+
+foreach (var item in labs)
+{
+    Console.WriteLine($"{item.Id}, {item.Number}, {item.Name}, {item.Block}");
+}
+
+//GetById
+Lab achado = context.Labs.Find(2);
+
+//Update
+achado.Name = "Programação";
+context.Labs.Update(achado);
+context.SaveChanges();
+
+//Delete
+context.Labs.Remove(achado);
+context.SaveChanges();
+
+
 
